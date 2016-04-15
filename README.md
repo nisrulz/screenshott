@@ -1,4 +1,4 @@
-# ScreenShott 
+# ScreenShott    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/screenshott/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/screenshott)
 
 Take screenshot on a click of a button.
 

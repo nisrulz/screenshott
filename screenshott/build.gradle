@@ -17,25 +17,61 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "24.0.3"
+  compileSdkVersion 25
+  buildToolsVersion "24.0.3"
 
-    defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 2
-        versionName VERSION_NAME
+  defaultConfig {
+    minSdkVersion 9
+    targetSdkVersion 25
+    versionCode 2
+    versionName VERSION_NAME
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.0.0'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  testCompile 'junit:junit:4.12'
+  compile 'com.android.support:appcompat-v7:25.0.0'
 }
+
+// Bintray info
+def LIB_MODULE_NAME = 'screenshott'
+def LIB_MODULE_DESC = 'Android library to take screenshot on a click of a button'
+def GITHUB_LINK = "https://github.com/nisrulz/screenshott"
+def GITHUB_REPO = "nisrulz/screenshott"
+
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'com.github.nisrulz:screenshott'
+
+  publishedGroupId = GROUP
+  libraryName = LIB_MODULE_NAME
+  artifact = LIB_MODULE_NAME // Has to be same as your library module name
+
+  libraryDescription = LIB_MODULE_DESC
+
+  // Your github repo link
+  siteUrl = GITHUB_LINK
+  gitUrl = GITHUB_LINK + ".git"
+  githubRepository = GITHUB_REPO
+
+  libraryVersion = VERSION_NAME
+
+  developerId = POM_DEVELOPER_ID
+  developerName = POM_DEVELOPER_NAME
+  developerEmail = POM_DEVELOPER_EMAILID
+
+  licenseName = POM_LICENCE_NAME
+  licenseUrl = POM_LICENCE_URL
+  allLicenses = [POM_ALL_LICENCES]
+}
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/bintrayv1.gradle'

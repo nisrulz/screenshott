@@ -1,0 +1,8 @@
+title: Screenshott
+description: " [Android Library] Take a screenshot of the device screen , programmatically!"
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-modernist
+
+gems:
+  - jekyll-mentions

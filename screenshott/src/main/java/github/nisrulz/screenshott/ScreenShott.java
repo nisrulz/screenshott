@@ -22,6 +22,7 @@ import android.view.View;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * @author Nishant Srivastava
@@ -47,6 +48,7 @@ public class ScreenShott {
   private void saveScreenshot(Bitmap bmp, String filename) {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
+    FileOutputStream outputStream = null;
     File file = new File(
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
             + "/"
@@ -54,11 +56,18 @@ public class ScreenShott {
             + ".jpg");
     try {
       file.createNewFile();
-      FileOutputStream outputStream = new FileOutputStream(file);
+      outputStream = new FileOutputStream(file);
       outputStream.write(bytes.toByteArray());
-      outputStream.close();
     } catch (Exception e) {
       e.printStackTrace();
+    } finally {
+      try {
+        if (outputStream != null) {
+          outputStream.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 }

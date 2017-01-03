@@ -13,6 +13,8 @@
 
 Take screenshot on a click of a button.
 
+![sc1](/img/sc1.png)
+
 # Including in your project
 ScreenShott is available in the Jcenter, so getting it as simple as adding it as a dependency
 ```gradle
@@ -41,6 +43,8 @@ where `{latest version}` corresponds to published version in [ ![Download](https
   ScreenShott.getInstance().saveScreenshotToPicturesFolder(context, bitmap, "my_screenshot_filename");
   ```
   .. or save the bitmap with your own implementation
+
+  > Please request the runtime permission for `android.permission.WRITE_EXTERNAL_STORAGE` to allow saving the file to external storage. The lib includes the permission, you just need to implement the runtime permission implementation code.
 
 
 ### Pull Requests

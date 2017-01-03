@@ -41,3 +41,20 @@ allprojects {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
+
+
+ext {
+  //Other
+  supportLibVersion = '25.1.0'
+
+  // Library Info
+  libVersionCode = 3
+  libVersionName = '1.1.0'
+  libPomUrl = 'https://github.com/nisrulz/screenshott'
+  libGithubRepo = 'nisrulz/screenshott'
+
+
+  libModuleName = 'screenshott'
+  libModuleDesc = 'Android library that allows taking a screenshot of the device screen , programmatically'
+  libBintrayName = 'com.github.nisrulz:screenshott'
+}

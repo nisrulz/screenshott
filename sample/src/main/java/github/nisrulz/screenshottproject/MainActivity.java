@@ -16,9 +16,12 @@
 
 package github.nisrulz.screenshottproject;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -37,12 +40,18 @@ public class MainActivity extends AppCompatActivity {
   private Bitmap bitmap;
   private TextView hidden_txtview;
 
+  private final static String[] requestWritePermission =
+      { Manifest.permission.WRITE_EXTERNAL_STORAGE };
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    final boolean hasWritePermission = RuntimePermissionUtil.checkPermissonGranted(this,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     imageView = (ImageView) findViewById(R.id.imageView);
     hidden_txtview = (TextView) findViewById(R.id.hidden_txtview);
@@ -76,13 +85,46 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         if (bitmap != null) {
-          // Save the screenshot
-          ScreenShott.getInstance()
-              .saveScreenshotToPicturesFolder(MainActivity.this, bitmap, "my_screenshot");
-          // Display a toast
-          Toast.makeText(MainActivity.this, "Bitmap Saved!", Toast.LENGTH_SHORT).show();
+          if (hasWritePermission) {
+            saveScreenshot();
+          }
+          else {
+            RuntimePermissionUtil.requestPermission(MainActivity.this, requestWritePermission, 100);
+          }
         }
       }
     });
+  }
+
+  private void saveScreenshot() {
+    // Save the screenshot
+    ScreenShott.getInstance()
+        .saveScreenshotToPicturesFolder(MainActivity.this, bitmap, "my_screenshot");
+    // Display a toast
+    Toast.makeText(MainActivity.this, "Bitmap Saved!", Toast.LENGTH_SHORT).show();
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull final String[] permissions,
+      @NonNull final int[] grantResults) {
+    switch (requestCode) {
+      case 100: {
+
+        RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
+          @Override
+          public void onPermissionGranted() {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+              saveScreenshot();
+            }
+          }
+
+          @Override
+          public void onPermissionDenied() {
+            Toast.makeText(MainActivity.this, "Permission Denied! You cannot save image!", Toast.LENGTH_SHORT).show();
+          }
+        });
+        break;
+      }
+    }
   }
 }

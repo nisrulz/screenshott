@@ -33,11 +33,16 @@ import static android.content.ContentValues.TAG;
 import static android.view.View.MeasureSpec;
 
 /**
- * @author Nishant Srivastava
+ * The type ScreenShott class.
  */
 public class ScreenShott {
   private static final ScreenShott ourInstance = new ScreenShott();
 
+  /**
+   * Gets instance.
+   *
+   * @return the instance
+   */
   public static ScreenShott getInstance() {
     return ourInstance;
   }
@@ -45,28 +50,59 @@ public class ScreenShott {
   private ScreenShott() {
   }
 
+  /**
+   * Take screen shot of the View with spaces as per constraints
+   *
+   * @param v
+   *     the v
+   * @return the bitmap
+   */
   public Bitmap takeScreenShotOfView(View v) {
     v.setDrawingCacheEnabled(true);
     v.buildDrawingCache(true);
-
+    
     // creates immutable clone
     Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
     v.setDrawingCacheEnabled(false); // clear drawing cache
     return b;
   }
 
+  /**
+   * Take screen shot of root view.
+   *
+   * @param v
+   *     the v
+   * @return the bitmap
+   */
   public Bitmap takeScreenShotOfRootView(View v) {
     v = v.getRootView();
     return takeScreenShotOfView(v);
   }
 
-  public Bitmap takeScreenShotOfHiddenView(View v) {
+  /**
+   * Take screen shot of just the View without any constraints
+   *
+   * @param v
+   *     the v
+   * @return the bitmap
+   */
+  public Bitmap takeScreenShotOfJustView(View v) {
     v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
         MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
     v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
     return takeScreenShotOfView(v);
   }
 
+  /**
+   * Save screenshot to pictures folder.
+   *
+   * @param context
+   *     the context
+   * @param image
+   *     the image
+   * @param filename
+   *     the filename
+   */
   public void saveScreenshotToPicturesFolder(Context context, Bitmap image, String filename) {
     File bitmapFile = getOutputMediaFile(filename);
     if (bitmapFile == null) {

@@ -25,14 +25,14 @@ where `{latest version}` corresponds to published version in [ ![Download](https
 + Get bitmap of screenshot
 
   ```java
-  // View
+  // View with spaces as per constraints
   Bitmap bitmap_view = ScreenShott.getInstance().takeScreenShotOfView(view);
 
   // RootView
   Bitmap bitmap_rootview = ScreenShott.getInstance().takeScreenShotOfRootView(view);
 
-  // Hidden View
-  Bitmap bitmap_hiddenview = ScreenShott.getInstance().takeScreenShotOfHiddenView(view);
+  // Just the View without any constraints
+  Bitmap bitmap_hiddenview = ScreenShott.getInstance().takeScreenShotOfJustView(view);
   ```
 
 + Save the bitmap using the provided helper function

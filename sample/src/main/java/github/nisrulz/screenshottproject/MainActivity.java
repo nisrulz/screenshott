@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
       public void onClick(View view) {
         // Take screen shot
         //bitmap = ScreenShott.getInstance().takeScreenShotOfView(hidden_txtview);
-        //bitmap = ScreenShott.getInstance().takeScreenShotOfHiddenView(hidden_txtview);
+        //bitmap = ScreenShott.getInstance().takeScreenShotOfJustView(hidden_txtview);
         bitmap = ScreenShott.getInstance().takeScreenShotOfRootView(view);
         // Display in imageview
         imageView.setImageBitmap(bitmap);

@@ -1,7 +1,10 @@
 ### Specs
 [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ascreenshott/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ascreenshott/_latestVersion)
 
-### Show some :heart:
+### Badges/Featured In
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Screenshott-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4963#)
+
+### Show some :heart: and star the repo to support the project
 [![GitHub stars](https://img.shields.io/github/stars/nisrulz/screenshott.svg?style=social&label=Star)](https://github.com/nisrulz/screenshott) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/screenshott.svg?style=social&label=Fork)](https://github.com/nisrulz/screenshott/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/screenshott.svg?style=social&label=Watch)](https://github.com/nisrulz/screenshott) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz)
 [![Twitter Follow](https://img.shields.io/twitter/follow/nisrulz.svg?style=social)](https://twitter.com/nisrulz)
 
@@ -17,13 +20,28 @@ where `{latest version}` corresponds to published version in [ ![Download](https
 
 
 #Usage
-+ Get bitmap of screenshot and save it on device
++ Get bitmap of screenshot
 
-```java
-ScreenShott.getInstance().takeScreenShotOfRootView(view);
-```
+  ```java
+  // View with spaces as per constraints
+  Bitmap bitmap_view = ScreenShott.getInstance().takeScreenShotOfView(view);
 
-where the param is _**view**_
+  // RootView
+  Bitmap bitmap_rootview = ScreenShott.getInstance().takeScreenShotOfRootView(view);
+
+  // Just the View without any constraints
+  Bitmap bitmap_hiddenview = ScreenShott.getInstance().takeScreenShotOfJustView(view);
+  ```
+
++ Save the bitmap using the provided helper function
+
+  ```java
+  ScreenShott.getInstance().saveScreenshotToPicturesFolder(context, bitmap, "my_screenshot_filename");
+  ```
+  .. or save the bitmap with your own implementation
+
+  > Please request the runtime permission for `android.permission.WRITE_EXTERNAL_STORAGE` to allow saving the file to external storage. The lib includes the permission, you just need to implement the runtime permission implementation code.
+
 
 ### Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
@@ -36,6 +54,10 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
 
 ### Created & Maintained By
 [Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
+
+> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> <a href='https://ko-fi.com/A443EQ6' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=f' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 
 License

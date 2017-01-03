@@ -22,13 +22,26 @@ where `{latest version}` corresponds to published version in [ ![Download](https
 
 
 #Usage
-+ Get bitmap of screenshot and save it on device
++ Get bitmap of screenshot
 
-```java
-ScreenShott.getInstance().takeScreenShotOfRootView(view, filename);
-```
+  ```java
+  // View
+  Bitmap bitmap_view = ScreenShott.getInstance().takeScreenShotOfView(view);
 
-where the params are the _**view**_ and the _**filename**_ of the screenshot to be stored
+  // RootView
+  Bitmap bitmap_rootview = ScreenShott.getInstance().takeScreenShotOfRootView(view);
+
+  // Hidden View
+  Bitmap bitmap_hiddenview = ScreenShott.getInstance().takeScreenShotOfHiddenView(view);
+  ```
+
++ Save the bitmap using the provided helper function
+
+  ```java
+  ScreenShott.getInstance().saveScreenshotToPicturesFolder(context, bitmap, "my_screenshot_filename");
+  ```
+  .. or save the bitmap with your own implementation
+
 
 ### Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:

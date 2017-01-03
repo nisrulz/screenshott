@@ -25,6 +25,15 @@
     tools:context="github.nisrulz.screenshottproject.MainActivity"
     tools:showIn="@layout/activity_main"
     >
+  <TextView
+      android:id="@+id/hidden_txtview"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:textColor="@color/colorAccent"
+      android:text="This is a Hidden TextView!"
+      android:visibility="invisible"
+      />
 
   <ImageView
       android:id="@+id/imageView"
@@ -33,8 +42,8 @@
       android:layout_above="@+id/capture_container"
       android:background="#ccc"
       android:padding="10dp"
-      android:src="@drawable/placeholder"
       android:scaleType="fitCenter"
+      android:src="@drawable/placeholder"
       />
   <LinearLayout
       android:id="@+id/capture_container"

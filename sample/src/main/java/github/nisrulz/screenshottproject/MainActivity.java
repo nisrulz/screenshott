@@ -24,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import github.nisrulz.screenshott.ScreenShott;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
   private ImageButton capture_refresh;
   private ImageButton capture_save;
   private Bitmap bitmap;
+  private TextView hidden_txtview;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +45,16 @@ public class MainActivity extends AppCompatActivity {
     setSupportActionBar(toolbar);
 
     imageView = (ImageView) findViewById(R.id.imageView);
+    hidden_txtview = (TextView) findViewById(R.id.hidden_txtview);
 
     capture_screenshot = (ImageButton) findViewById(R.id.capture_screenshot);
     capture_screenshot.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        // Take screen shot
+        //bitmap = ScreenShott.getInstance().takeScreenShotOfView(hidden_txtview);
         bitmap = ScreenShott.getInstance().takeScreenShotOfRootView(view);
+        // Display in imageview
         imageView.setImageBitmap(bitmap);
       }
     });
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
       public void onClick(View view) {
         Bitmap placeholder =
             BitmapFactory.decodeResource(MainActivity.this.getResources(), R.drawable.placeholder);
+        // load the placeholder image into imageview
         imageView.setImageBitmap(placeholder);
       }
     });
@@ -71,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
           // Save the screenshot
           ScreenShott.getInstance()
               .saveScreenshotToPicturesFolder(MainActivity.this, bitmap, "my_screenshot");
+          // Display a toast
           Toast.makeText(MainActivity.this, "Bitmap Saved!", Toast.LENGTH_SHORT).show();
         }
       }

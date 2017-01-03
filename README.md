@@ -25,10 +25,10 @@ where `{latest version}` corresponds to published version in [ ![Download](https
 + Get bitmap of screenshot and save it on device
 
 ```java
-ScreenShott.getInstance().takeScreenShotOfRootView(view);
+ScreenShott.getInstance().takeScreenShotOfRootView(view, filename);
 ```
 
-where the param is _**view**_
+where the params are the _**view**_ and the _**filename**_ of the screenshot to be stored
 
 ### Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:

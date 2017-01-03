@@ -24,13 +24,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 import github.nisrulz.screenshott.ScreenShott;
 
 public class MainActivity extends AppCompatActivity {
 
-  ImageView imageView;
-  ImageButton capture_screenshot, capture_refresh, capture_save;
-  Bitmap bitmap;
+  private ImageView imageView;
+  private ImageButton capture_screenshot;
+  private ImageButton capture_refresh;
+  private ImageButton capture_save;
+  private Bitmap bitmap;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
       public void onClick(View view) {
         if (bitmap != null) {
           // Save the screenshot
-          ScreenShott.getInstance().saveScreenshotToPicturesFolder(bitmap, "my_screenshot");
+          ScreenShott.getInstance()
+              .saveScreenshotToPicturesFolder(MainActivity.this, bitmap, "my_screenshot");
+          Toast.makeText(MainActivity.this, "Bitmap Saved!", Toast.LENGTH_SHORT).show();
         }
       }
     });

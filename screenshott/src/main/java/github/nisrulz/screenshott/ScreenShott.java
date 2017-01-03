@@ -16,21 +16,27 @@
 
 package github.nisrulz.screenshott;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import static android.content.ContentValues.TAG;
 import static android.view.View.MeasureSpec;
 
 /**
  * @author Nishant Srivastava
  */
 public class ScreenShott {
-  private static ScreenShott ourInstance = new ScreenShott();
+  private static final ScreenShott ourInstance = new ScreenShott();
 
   public static ScreenShott getInstance() {
     return ourInstance;
@@ -61,29 +67,44 @@ public class ScreenShott {
     return takeScreenShotOfView(v);
   }
 
-  public void saveScreenshotToPicturesFolder(Bitmap bmp, String filename) {
-    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    bmp.compress(Bitmap.CompressFormat.JPEG, 65, bytes);
-    FileOutputStream outputStream = null;
-    File file = new File(
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            + "/"
-            + filename
-            + ".jpg");
+  public void saveScreenshotToPicturesFolder(Context context, Bitmap image, String filename) {
+    File bitmapFile = getOutputMediaFile(filename);
+    if (bitmapFile == null) {
+      Log.d(TAG, "Error creating media file, check storage permissions: ");// e.getMessage());
+      return;
+    }
     try {
-      file.createNewFile();
-      outputStream = new FileOutputStream(file);
-      outputStream.write(bytes.toByteArray());
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      try {
-        if (outputStream != null) {
-          outputStream.close();
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
+      FileOutputStream fos = new FileOutputStream(bitmapFile);
+      image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+      fos.close();
+
+      // Initiate media scanning to make the image available in gallery apps
+      MediaScannerConnection.scanFile(context, new String[] { bitmapFile.getPath() },
+          new String[] { "image/jpeg" }, null);
+    } catch (FileNotFoundException e) {
+      Log.d(TAG, "File not found: " + e.getMessage());
+    } catch (IOException e) {
+      Log.d(TAG, "Error accessing file: " + e.getMessage());
+    }
+  }
+
+  private File getOutputMediaFile(String filename) {
+    // To be safe, you should check that the SDCard is mounted
+    // using Environment.getExternalStorageState() before doing this.
+    File mediaStorageDirectory = new File(
+        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            + File.separator);
+    // Create the storage directory if it does not exist
+    if (!mediaStorageDirectory.exists()) {
+      if (!mediaStorageDirectory.mkdirs()) {
+        return null;
       }
     }
+    // Create a media file name
+    String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+    File mediaFile;
+    String mImageName = filename + timeStamp + ".jpg";
+    mediaFile = new File(mediaStorageDirectory.getPath() + File.separator + mImageName);
+    return mediaFile;
   }
 }

@@ -24,6 +24,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import static android.view.View.MeasureSpec;
+
 /**
  * @author Nishant Srivastava
  */
@@ -37,17 +39,31 @@ public class ScreenShott {
   private ScreenShott() {
   }
 
-  public Bitmap takeScreenShotOfRootView(View root_view, String filename) {
-    View rootview = root_view.getRootView();
-    rootview.setDrawingCacheEnabled(true);
-    Bitmap bitmap = rootview.getDrawingCache();
-    saveScreenshot(bitmap, filename);
-    return bitmap;
+  public Bitmap takeScreenShotOfView(View v) {
+    v.setDrawingCacheEnabled(true);
+    v.buildDrawingCache(true);
+
+    // creates immutable clone
+    Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
+    v.setDrawingCacheEnabled(false); // clear drawing cache
+    return b;
   }
 
-  private void saveScreenshot(Bitmap bmp, String filename) {
+  public Bitmap takeScreenShotOfRootView(View v) {
+    v = v.getRootView();
+    return takeScreenShotOfView(v);
+  }
+
+  public Bitmap takeScreenShotOfHiddenView(View v) {
+    v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+        MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+    v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+    return takeScreenShotOfView(v);
+  }
+
+  public void saveScreenshotToPicturesFolder(Bitmap bmp, String filename) {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
+    bmp.compress(Bitmap.CompressFormat.JPEG, 65, bytes);
     FileOutputStream outputStream = null;
     File file = new File(
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)

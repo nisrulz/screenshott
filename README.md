@@ -4,7 +4,7 @@
 [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ascreenshott/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ascreenshott/_latestVersion)
 
 ### Badges/Featured In
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Screenshott-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4963#)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Screenshott-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4963#) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-%23125-blue.svg)](https://www.androiddevdigest.com/digest-125/)
 
 ### Show some :heart: and star the repo to support the project
 [![GitHub stars](https://img.shields.io/github/stars/nisrulz/screenshott.svg?style=social&label=Star)](https://github.com/nisrulz/screenshott) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/screenshott.svg?style=social&label=Fork)](https://github.com/nisrulz/screenshott/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/screenshott.svg?style=social&label=Watch)](https://github.com/nisrulz/screenshott) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz)

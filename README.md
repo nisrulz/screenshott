@@ -11,7 +11,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/nisrulz.svg?style=social)](https://twitter.com/nisrulz)
 
 
-Take screenshot on a click of a button.
+Take a screenshot of your view layout , programmatically!
 
 ![sc1](/img/sc1.png)
 

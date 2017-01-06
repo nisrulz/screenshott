@@ -13,7 +13,7 @@
 
 Take a screenshot of your view layout , programmatically!
 
-![sc1](/img/sc1.png)
+![sc1](/img/sc1.png)  ![sc2](/img/sc2.png)
 
 # Including in your project
 ScreenShott is available in the Jcenter, so getting it as simple as adding it as a dependency

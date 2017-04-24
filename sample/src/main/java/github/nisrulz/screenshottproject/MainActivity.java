@@ -33,15 +33,14 @@ import github.nisrulz.screenshott.ScreenShott;
 
 public class MainActivity extends AppCompatActivity {
 
+  private final static String[] requestWritePermission =
+      { Manifest.permission.WRITE_EXTERNAL_STORAGE };
   private ImageView imageView;
   private ImageButton capture_screenshot;
   private ImageButton capture_refresh;
   private ImageButton capture_save;
   private Bitmap bitmap;
   private TextView hidden_txtview;
-
-  private final static String[] requestWritePermission =
-      { Manifest.permission.WRITE_EXTERNAL_STORAGE };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
 
           @Override
           public void onPermissionDenied() {
-            Toast.makeText(MainActivity.this, "Permission Denied! You cannot save image!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Permission Denied! You cannot save image!",
+                Toast.LENGTH_SHORT).show();
           }
         });
         break;

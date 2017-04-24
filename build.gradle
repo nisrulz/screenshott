@@ -55,6 +55,7 @@ ext {
 
 
   libModuleName = 'screenshott'
-  libModuleDesc = 'Android library that allows taking a screenshot of the device screen , programmatically'
+  libModuleDesc =
+      'Android library that allows taking a screenshot of the device screen , programmatically'
   libBintrayName = 'com.github.nisrulz:screenshott'
 }

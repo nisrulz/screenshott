@@ -38,6 +38,9 @@ import static android.view.View.MeasureSpec;
 public class ScreenShott {
   private static final ScreenShott ourInstance = new ScreenShott();
 
+  private ScreenShott() {
+  }
+
   /**
    * Gets instance.
    *
@@ -45,26 +48,6 @@ public class ScreenShott {
    */
   public static ScreenShott getInstance() {
     return ourInstance;
-  }
-
-  private ScreenShott() {
-  }
-
-  /**
-   * Take screen shot of the View with spaces as per constraints
-   *
-   * @param v
-   *     the v
-   * @return the bitmap
-   */
-  public Bitmap takeScreenShotOfView(View v) {
-    v.setDrawingCacheEnabled(true);
-    v.buildDrawingCache(true);
-    
-    // creates immutable clone
-    Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
-    v.setDrawingCacheEnabled(false); // clear drawing cache
-    return b;
   }
 
   /**
@@ -77,6 +60,23 @@ public class ScreenShott {
   public Bitmap takeScreenShotOfRootView(View v) {
     v = v.getRootView();
     return takeScreenShotOfView(v);
+  }
+
+  /**
+   * Take screen shot of the View with spaces as per constraints
+   *
+   * @param v
+   *     the v
+   * @return the bitmap
+   */
+  public Bitmap takeScreenShotOfView(View v) {
+    v.setDrawingCacheEnabled(true);
+    v.buildDrawingCache(true);
+
+    // creates immutable clone
+    Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
+    v.setDrawingCacheEnabled(false); // clear drawing cache
+    return b;
   }
 
   /**

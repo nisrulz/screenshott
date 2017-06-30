@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import github.nisrulz.screenshott.ScreenShott;
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -97,10 +98,16 @@ public class MainActivity extends AppCompatActivity {
 
   private void saveScreenshot() {
     // Save the screenshot
-    ScreenShott.getInstance()
-        .saveScreenshotToPicturesFolder(MainActivity.this, bitmap, "my_screenshot");
-    // Display a toast
-    Toast.makeText(MainActivity.this, "Bitmap Saved!", Toast.LENGTH_SHORT).show();
+
+    try {
+      File file = ScreenShott.getInstance()
+          .saveScreenshotToPicturesFolder(MainActivity.this, bitmap, "my_screenshot");
+      // Display a toast
+      Toast.makeText(MainActivity.this, "Bitmap Saved at " + file.getAbsolutePath(),
+          Toast.LENGTH_SHORT).show();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override

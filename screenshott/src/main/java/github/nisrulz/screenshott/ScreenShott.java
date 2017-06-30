@@ -20,16 +20,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static android.content.ContentValues.TAG;
 import static android.view.View.MeasureSpec;
 
 /**
@@ -102,26 +98,24 @@ public class ScreenShott {
    *     the image
    * @param filename
    *     the filename
+   * @return the bitmap file object
+   * @throws Exception
+   *     the exception
    */
-  public void saveScreenshotToPicturesFolder(Context context, Bitmap image, String filename) {
+  public File saveScreenshotToPicturesFolder(Context context, Bitmap image, String filename)
+      throws Exception {
     File bitmapFile = getOutputMediaFile(filename);
     if (bitmapFile == null) {
-      Log.d(TAG, "Error creating media file, check storage permissions: ");// e.getMessage());
-      return;
+      throw new NullPointerException("Error creating media file, check storage permissions!");
     }
-    try {
-      FileOutputStream fos = new FileOutputStream(bitmapFile);
-      image.compress(Bitmap.CompressFormat.PNG, 90, fos);
-      fos.close();
+    FileOutputStream fos = new FileOutputStream(bitmapFile);
+    image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+    fos.close();
 
-      // Initiate media scanning to make the image available in gallery apps
-      MediaScannerConnection.scanFile(context, new String[] { bitmapFile.getPath() },
-          new String[] { "image/jpeg" }, null);
-    } catch (FileNotFoundException e) {
-      Log.d(TAG, "File not found: " + e.getMessage());
-    } catch (IOException e) {
-      Log.d(TAG, "Error accessing file: " + e.getMessage());
-    }
+    // Initiate media scanning to make the image available in gallery apps
+    MediaScannerConnection.scanFile(context, new String[] { bitmapFile.getPath() },
+        new String[] { "image/jpeg" }, null);
+    return bitmapFile;
   }
 
   private File getOutputMediaFile(String filename) {

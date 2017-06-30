@@ -35,6 +35,14 @@
       android:visibility="invisible"
       />
 
+  <TextureView
+      android:id="@+id/hidden_textureview"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:text="This is a Hidden TextureView!"
+      android:visibility="invisible"
+      />
+
   <ImageView
       android:id="@+id/imageView"
       android:layout_width="match_parent"

@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
   private ImageButton capture_save;
   private Bitmap bitmap;
   private TextView hidden_txtview;
+  private TextureView hidden_textureview;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     imageView = (ImageView) findViewById(R.id.imageView);
     hidden_txtview = (TextView) findViewById(R.id.hidden_txtview);
+    hidden_textureview = (TextureView) findViewById(R.id.hidden_textureview);
 
     capture_screenshot = (ImageButton) findViewById(R.id.capture_screenshot);
     capture_screenshot.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // Take screen shot
         //bitmap = ScreenShott.getInstance().takeScreenShotOfView(hidden_txtview);
         //bitmap = ScreenShott.getInstance().takeScreenShotOfJustView(hidden_txtview);
+        //bitmap = ScreenShott.getInstance().takeScreenShotOfTextureView(hidden_textureview);
         bitmap = ScreenShott.getInstance().takeScreenShotOfRootView(view);
         // Display in imageview
         imageView.setImageBitmap(bitmap);

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.os.Environment;
+import android.view.TextureView;
 import android.view.View;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -73,6 +74,17 @@ public class ScreenShott {
     Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
     v.setDrawingCacheEnabled(false); // clear drawing cache
     return b;
+  }
+
+  /**
+   * Take screen shot of texture view as bitmap.
+   *
+   * @param v
+   *     the TextureView
+   * @return the bitmap
+   */
+  public Bitmap takeScreenShotOfTextureView(TextureView v) {
+    return v.getBitmap();
   }
 
   /**

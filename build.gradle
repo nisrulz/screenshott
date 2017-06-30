@@ -35,6 +35,10 @@ buildscript {
 allprojects {
   repositories {
     jcenter()
+    maven {
+      url 'https://maven.google.com'
+      // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
+    }
   }
 }
 
@@ -45,7 +49,11 @@ task clean(type: Delete) {
 
 ext {
   //Other
-  supportLibVersion = '25.4.0'
+  targetSdkVersion = 26
+  minSdkVersion = 14
+  compileSdkVersion = targetSdkVersion
+  buildToolsVersion = '26.0.0-rc2'
+  supportLibVersion = '26.0.0-beta2'
 
   // Library Info
   libVersionCode = 6

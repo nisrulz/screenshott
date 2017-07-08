@@ -42,9 +42,11 @@ where `{latest version}` corresponds to published version in [ ![Download](https
   ```java
   ScreenShott.getInstance().saveScreenshotToPicturesFolder(context, bitmap, "my_screenshot_filename");
   ```
-  .. or save the bitmap with your own implementation
+  > Add permission `<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>` to your AndroidManifest.xml
+  >
+  > Request the runtime permission for `android.permission.WRITE_EXTERNAL_STORAGE` to allow saving the file to external storage.
 
-  > Please request the runtime permission for `android.permission.WRITE_EXTERNAL_STORAGE` to allow saving the file to external storage. The lib includes the permission, you just need to implement the runtime permission implementation code.
+  .. or save the bitmap with your own implementation
 
 
 ### Pull Requests
@@ -55,9 +57,6 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
   4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the maintainers) will get rejected.
   5. Check for existing [issues](https://github.com/nisrulz/screenshott/issues) first, before filing an issue.
   6. Have fun!
-
-### Created & Maintained By
-[Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
 
 ### Created & Maintained By
 [Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))

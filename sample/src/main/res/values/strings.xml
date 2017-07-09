@@ -16,4 +16,5 @@
 
 <resources>
   <string name="app_name">ScreenShott</string>
+  <string name="this_is_a_hidden_textview">This is a Hidden TextView!</string>
 </resources>

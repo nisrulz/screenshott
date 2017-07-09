@@ -38,28 +38,23 @@ public class MainActivity extends AppCompatActivity {
   private final static String[] requestWritePermission =
       { Manifest.permission.WRITE_EXTERNAL_STORAGE };
   private ImageView imageView;
-  private ImageButton capture_screenshot;
-  private ImageButton capture_refresh;
-  private ImageButton capture_save;
   private Bitmap bitmap;
-  private TextView hidden_txtview;
-  private TextureView hidden_textureview;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
     final boolean hasWritePermission = RuntimePermissionUtil.checkPermissonGranted(this,
         Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-    imageView = (ImageView) findViewById(R.id.imageView);
-    hidden_txtview = (TextView) findViewById(R.id.hidden_txtview);
-    hidden_textureview = (TextureView) findViewById(R.id.hidden_textureview);
+    imageView = findViewById(R.id.imageView);
+    TextView hidden_txtview =  findViewById(R.id.hidden_txtview);
+    TextureView hidden_textureview =  findViewById(R.id.hidden_textureview);
 
-    capture_screenshot = (ImageButton) findViewById(R.id.capture_screenshot);
+    ImageButton capture_screenshot = findViewById(R.id.capture_screenshot);
     capture_screenshot.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -73,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    capture_refresh = (ImageButton) findViewById(R.id.capture_refresh);
+    ImageButton capture_refresh = findViewById(R.id.capture_refresh);
     capture_refresh.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -84,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    capture_save = (ImageButton) findViewById(R.id.capture_save);
+    ImageButton capture_save =  findViewById(R.id.capture_save);
     capture_save.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {

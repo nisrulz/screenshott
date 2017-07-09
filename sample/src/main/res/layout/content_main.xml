@@ -30,7 +30,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="center"
-      android:text="This is a Hidden TextView!"
+      android:text="@string/this_is_a_hidden_textview"
       android:textColor="@color/colorAccent"
       android:visibility="invisible"
       />
@@ -39,7 +39,6 @@
       android:id="@+id/hidden_textureview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="This is a Hidden TextureView!"
       android:visibility="invisible"
       />
 

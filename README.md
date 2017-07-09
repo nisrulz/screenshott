@@ -70,7 +70,9 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
 [Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
 
 
-> If you found this library helpful or you learned something from the source code and want to thank me, consider [buying me a cup of](https://www.paypal.me/nisrulz/5) :coffee:
+> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+  + [PayPal](https://www.paypal.me/nisrulz/5)
+  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
 
 License
 =======

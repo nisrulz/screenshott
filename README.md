@@ -35,12 +35,20 @@ where `{latest version}` corresponds to published version in [ ![Download](https
 
   // Just the View without any constraints
   Bitmap bitmap_hiddenview = ScreenShott.getInstance().takeScreenShotOfJustView(view);
+
+  // Texture View
+  Bitmap bitmap_textureview= ScreenShott.getInstance().takeScreenShotOfTextureView(textureview);
   ```
 
 + Save the bitmap using the provided helper function
 
   ```java
-  ScreenShott.getInstance().saveScreenshotToPicturesFolder(context, bitmap, "my_screenshot_filename");
+  File file = ScreenShott.getInstance().saveScreenshotToPicturesFolder(context, bitmap, "my_screenshot_filename");
+  ```
+  You can use the `file` object returned by `saveScreenshotToPicturesFolder()` to get the file object and then the path of the file saved
+
+  ```java
+  String bitmapFilePath = file.getAbsolutePath();
   ```
   > Add permission `<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>` to your AndroidManifest.xml
   >

@@ -23,7 +23,7 @@ compile 'com.github.nisrulz:screenshott:{latest version}'
 where `{latest version}` corresponds to published version in [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ascreenshott/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ascreenshott/_latestVersion)
 
 
-#Usage
+# Usage
 + Get bitmap of screenshot
 
   ```java

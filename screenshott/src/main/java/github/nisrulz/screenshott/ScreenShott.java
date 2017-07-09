@@ -143,7 +143,7 @@ public class ScreenShott {
       }
     }
     // Create a media file name
-    String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+    String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
     File mediaFile;
     String mImageName = filename + timeStamp + ".jpg";
     mediaFile = new File(mediaStorageDirectory.getPath() + File.separator + mImageName);

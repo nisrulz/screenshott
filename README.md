@@ -1,7 +1,7 @@
 ![Image](/img/github_banner.png)
 
 ### Specs
-[ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ascreenshott/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ascreenshott/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ascreenshott/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ascreenshott/_latestVersion) [![API](https://img.shields.io/badge/API-14%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 ### Badges/Featured In
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Screenshott-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4963#) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-%23125-blue.svg)](https://www.androiddevdigest.com/digest-125/)

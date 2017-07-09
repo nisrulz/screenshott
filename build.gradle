@@ -53,8 +53,8 @@ ext {
   supportLibVersion = '26.0.0-beta2'
 
   // Library Info
-  libVersionCode = 6
-  libVersionName = '1.1.3'
+  libVersionCode = 7
+  libVersionName = '2.0.0'
   libPomUrl = 'https://github.com/nisrulz/screenshott'
   libGithubRepo = 'nisrulz/screenshott'
 

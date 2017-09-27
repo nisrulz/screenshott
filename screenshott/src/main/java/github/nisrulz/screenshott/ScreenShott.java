@@ -22,6 +22,7 @@ import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.view.TextureView;
 import android.view.View;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -33,120 +34,130 @@ import static android.view.View.MeasureSpec;
  * The type ScreenShott class.
  */
 public class ScreenShott {
-  private static final ScreenShott ourInstance = new ScreenShott();
+    private static final ScreenShott ourInstance = new ScreenShott();
 
-  private ScreenShott() {
-  }
-
-  /**
-   * Gets instance.
-   *
-   * @return the instance
-   */
-  public static ScreenShott getInstance() {
-    return ourInstance;
-  }
-
-  /**
-   * Take screen shot of root view.
-   *
-   * @param v
-   *     the v
-   * @return the bitmap
-   */
-  public Bitmap takeScreenShotOfRootView(View v) {
-    v = v.getRootView();
-    return takeScreenShotOfView(v);
-  }
-
-  /**
-   * Take screen shot of the View with spaces as per constraints
-   *
-   * @param v
-   *     the v
-   * @return the bitmap
-   */
-  public Bitmap takeScreenShotOfView(View v) {
-    v.setDrawingCacheEnabled(true);
-    v.buildDrawingCache(true);
-
-    // creates immutable clone
-    Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
-    v.setDrawingCacheEnabled(false); // clear drawing cache
-    return b;
-  }
-
-  /**
-   * Take screen shot of texture view as bitmap.
-   *
-   * @param v
-   *     the TextureView
-   * @return the bitmap
-   */
-  public Bitmap takeScreenShotOfTextureView(TextureView v) {
-    return v.getBitmap();
-  }
-
-  /**
-   * Take screen shot of just the View without any constraints
-   *
-   * @param v
-   *     the v
-   * @return the bitmap
-   */
-  public Bitmap takeScreenShotOfJustView(View v) {
-    v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
-        MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-    v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
-    return takeScreenShotOfView(v);
-  }
-
-  /**
-   * Save screenshot to pictures folder.
-   *
-   * @param context
-   *     the context
-   * @param image
-   *     the image
-   * @param filename
-   *     the filename
-   * @return the bitmap file object
-   * @throws Exception
-   *     the exception
-   */
-  public File saveScreenshotToPicturesFolder(Context context, Bitmap image, String filename)
-      throws Exception {
-    File bitmapFile = getOutputMediaFile(filename);
-    if (bitmapFile == null) {
-      throw new NullPointerException("Error creating media file, check storage permissions!");
+    private ScreenShott() {
     }
-    FileOutputStream fos = new FileOutputStream(bitmapFile);
-    image.compress(Bitmap.CompressFormat.PNG, 90, fos);
-    fos.close();
 
-    // Initiate media scanning to make the image available in gallery apps
-    MediaScannerConnection.scanFile(context, new String[] { bitmapFile.getPath() },
-        new String[] { "image/jpeg" }, null);
-    return bitmapFile;
-  }
-
-  private File getOutputMediaFile(String filename) {
-    // To be safe, you should check that the SDCard is mounted
-    // using Environment.getExternalStorageState() before doing this.
-    File mediaStorageDirectory = new File(
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            + File.separator);
-    // Create the storage directory if it does not exist
-    if (!mediaStorageDirectory.exists()) {
-      if (!mediaStorageDirectory.mkdirs()) {
-        return null;
-      }
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
+    public static ScreenShott getInstance() {
+        return ourInstance;
     }
-    // Create a media file name
-    String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
-    File mediaFile;
-    String mImageName = filename + timeStamp + ".jpg";
-    mediaFile = new File(mediaStorageDirectory.getPath() + File.separator + mImageName);
-    return mediaFile;
-  }
+
+    /**
+     * Take screen shot of root view.
+     *
+     * @param v the v
+     * @return the bitmap
+     */
+    public Bitmap takeScreenShotOfRootView(View v) {
+        v = v.getRootView();
+        return takeScreenShotOfView(v);
+    }
+
+
+    /**
+     * Take screen shot based on x,y coordinates from root view.
+     *
+     * @param v      The root view of the layout.
+     * @param x      The x top-start position of the view
+     * @param y      The y top-start position of the view
+     * @param width  The width of the croppable area
+     * @param height The height of the croppable area
+     * @return the Cropped bitmap based on the coordinates, width and height
+     */
+    public Bitmap takeScreenShotWithCoordinatesOfRootView(View v, int x, int y, int width, int height) {
+        v = v.getRootView();
+        Bitmap actualBitmap = takeScreenShotOfView(v);
+        return Bitmap.createBitmap(actualBitmap, x, y, width, height);
+    }
+
+
+    /**
+     * Take screen shot of the View with spaces as per constraints
+     *
+     * @param v the v
+     * @return the bitmap
+     */
+    public Bitmap takeScreenShotOfView(View v) {
+        v.setDrawingCacheEnabled(true);
+        v.buildDrawingCache(true);
+
+        // creates immutable clone
+        Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
+        v.setDrawingCacheEnabled(false); // clear drawing cache
+        return b;
+    }
+
+    /**
+     * Take screen shot of texture view as bitmap.
+     *
+     * @param v the TextureView
+     * @return the bitmap
+     */
+    public Bitmap takeScreenShotOfTextureView(TextureView v) {
+        return v.getBitmap();
+    }
+
+    /**
+     * Take screen shot of just the View without any constraints
+     *
+     * @param v the v
+     * @return the bitmap
+     */
+    public Bitmap takeScreenShotOfJustView(View v) {
+        v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        return takeScreenShotOfView(v);
+    }
+
+    /**
+     * Save screenshot to pictures folder.
+     *
+     * @param context  the context
+     * @param image    the image
+     * @param filename the filename
+     * @return the bitmap file object
+     * @throws Exception the exception
+     */
+    public File saveScreenshotToPicturesFolder(Context context, Bitmap image, String filename)
+            throws Exception {
+        File bitmapFile = getOutputMediaFile(filename);
+        if (bitmapFile == null) {
+            throw new NullPointerException("Error creating media file, check storage permissions!");
+        }
+        FileOutputStream fos = new FileOutputStream(bitmapFile);
+        image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+        fos.close();
+
+        // Initiate media scanning to make the image available in gallery apps
+        MediaScannerConnection.scanFile(context, new String[]{bitmapFile.getPath()},
+                new String[]{"image/jpeg"}, null);
+        return bitmapFile;
+    }
+
+    private File getOutputMediaFile(String filename) {
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+        File mediaStorageDirectory = new File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                        + File.separator);
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDirectory.exists()) {
+            if (!mediaStorageDirectory.mkdirs()) {
+                return null;
+            }
+        }
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
+        File mediaFile;
+        String mImageName = filename + timeStamp + ".jpg";
+        mediaFile = new File(mediaStorageDirectory.getPath() + File.separator + mImageName);
+        return mediaFile;
+    }
 }

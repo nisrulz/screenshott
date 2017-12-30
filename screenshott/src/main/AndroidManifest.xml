@@ -16,7 +16,6 @@
 
 <manifest package="github.nisrulz.screenshott">
 
-  <application>
-  </application>
+    <application></application>
 
 </manifest>

@@ -28,6 +28,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import github.nisrulz.screenshott.ScreenShott;
@@ -51,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
         Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     imageView = findViewById(R.id.imageView);
-    TextView hidden_txtview =  findViewById(R.id.hidden_txtview);
-    TextureView hidden_textureview =  findViewById(R.id.hidden_textureview);
+    TextView hidden_txtview = findViewById(R.id.hidden_txtview);
+    TextureView hidden_textureview = findViewById(R.id.hidden_textureview);
+
+    final ScrollView scrollView = findViewById(R.id.scroll_view);
 
     ImageButton capture_screenshot = findViewById(R.id.capture_screenshot);
     capture_screenshot.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
         //bitmap = ScreenShott.getInstance().takeScreenShotOfView(hidden_txtview);
         //bitmap = ScreenShott.getInstance().takeScreenShotOfJustView(hidden_txtview);
         //bitmap = ScreenShott.getInstance().takeScreenShotOfTextureView(hidden_textureview);
-        bitmap = ScreenShott.getInstance().takeScreenShotOfRootView(view);
+        //bitmap = ScreenShott.getInstance().takeScreenShotOfRootView(view);
+
+        bitmap = ScreenShott.getInstance()
+            .takeScreenShotOfScrollView(MainActivity.this, R.id.root_view, R.layout.activity_main);
         // Display in imageview
         imageView.setImageBitmap(bitmap);
       }
@@ -79,15 +85,14 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    ImageButton capture_save =  findViewById(R.id.capture_save);
+    ImageButton capture_save = findViewById(R.id.capture_save);
     capture_save.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         if (bitmap != null) {
           if (hasWritePermission) {
             saveScreenshot();
-          }
-          else {
+          } else {
             RuntimePermissionUtil.requestPermission(MainActivity.this, requestWritePermission, 100);
           }
         }

@@ -18,7 +18,7 @@ Take a screenshot of your view layout , programmatically!
 # Including in your project
 ScreenShott is available in the Jcenter, so getting it as simple as adding it as a dependency
 ```gradle
-compile 'com.github.nisrulz:screenshott:{latest version}'
+implementation 'com.github.nisrulz:screenshott:{latest version}'
 ```
 where `{latest version}` corresponds to published version in [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ascreenshott/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ascreenshott/_latestVersion)
 

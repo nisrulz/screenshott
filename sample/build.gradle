@@ -36,9 +36,9 @@ android {
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  testCompile 'junit:junit:4.12'
-  compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-  compile "com.android.support:design:${rootProject.ext.supportLibVersion}"
-  compile project(':screenshott')
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  testImplementation 'junit:junit:4.12'
+  implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+  implementation "com.android.support:design:${rootProject.ext.supportLibVersion}"
+  implementation project(':screenshott')
 }

@@ -25,6 +25,82 @@
     tools:context="github.nisrulz.screenshottproject.MainActivity"
     tools:showIn="@layout/activity_main"
     >
+
+  <ScrollView
+      android:id="@+id/scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+      <ImageView
+          android:id="@+id/imageView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_above="@+id/capture_container"
+          android:background="#ccc"
+          android:padding="10dp"
+          android:scaleType="fitCenter"
+          android:src="@drawable/placeholder"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="This"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="is"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="a"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="ScrollView"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="Widget"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="with "
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="a"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="lot"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="of"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="textviews"
+          />
+
+
+    </LinearLayout>
+  </ScrollView>
   <TextView
       android:id="@+id/hidden_txtview"
       android:layout_width="match_parent"
@@ -42,16 +118,7 @@
       android:visibility="invisible"
       />
 
-  <ImageView
-      android:id="@+id/imageView"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_above="@+id/capture_container"
-      android:background="#ccc"
-      android:padding="10dp"
-      android:scaleType="fitCenter"
-      android:src="@drawable/placeholder"
-      />
+
   <LinearLayout
       android:id="@+id/capture_container"
       android:layout_width="match_parent"

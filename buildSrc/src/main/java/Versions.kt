@@ -28,8 +28,11 @@ object Versions {
 
     // Dependencies
     const val kotlin = "1.3.71"
-    const val support = "1.0.0"
-    const val appCompat = "1.1.0"
+    const val andxAppcompat = "1.1.0"
+    const val andxCore = "1.1.0"
+    const val andxAnnoation = "1.1.0"
+    const val andxLifecycleRuntime = "2.2.0"
+    const val material = "1.1.0"
 
     // Testing
     const val junit = "4.12"
@@ -45,6 +48,6 @@ object Versions {
     const val appName = "1.0.0"
 
     // Library
-    const val libraryCode = 17
-    const val libraryName = "2.0.0"
+    const val libraryCode = 8
+    const val libraryName = "2.0.1"
 }

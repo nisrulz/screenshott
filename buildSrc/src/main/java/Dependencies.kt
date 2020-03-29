@@ -28,7 +28,11 @@ object Dependencies {
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 
-    // Support Library
-    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    const val supportCore = "androidx.core:core:${Versions.support}"
+    // AndroidX
+    const val andxAppCompat = "androidx.appcompat:appcompat:${Versions.andxAppcompat}"
+    const val andxCore = "androidx.core:core:${Versions.andxCore}"
+    const val andxAnnotation = "androidx.annotation:annotation:${Versions.andxAnnoation}"
+    const val Material = "'com.google.android.material:material:${Versions.material}"
+    const val andxLifecycleRuntime =
+        "androidx.lifecycle:lifecycle-runtime:${Versions.andxLifecycleRuntime}"
 }

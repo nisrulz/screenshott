@@ -14,26 +14,10 @@
  * limitations under the License.
  */
 
-android {
-    defaultConfig {
-        applicationId "github.nisrulz.screenshottproject"
-
-        versionCode Versions.appCode
-        versionName Versions.appName
-    }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    // Kotlin
-    implementation Dependencies.kotlinStdLib
-
-    // AndroidX
-    implementation Dependencies.andxAnnotation
-    implementation Dependencies.andxCore
-    implementation Dependencies.Material
-
-    // implementation 'com.github.nisrulz:screenshott:2.0.1'
-    implementation project(':screenshott')
+object LibraryConfig {
+    const val libPomUrl = "https://github.com/nisrulz/screenshott"
+    const val libGithubRepo = "nisrulz/screenshott"
+    const val libModuleName = "screenshott"
+    const val libModuleDesc = "Android library that allows taking a screenshot of the device screen , programmatically."
+    const val libBintrayName = "com.github.nisrulz:screenshott"
 }

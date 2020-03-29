@@ -14,4 +14,6 @@
  * limitations under the License.
  */
 
-include ':sample', ':screenshott'
+rootProject.name = 'ScreenshottProject'
+include ':sample'
+include ':screenshott'

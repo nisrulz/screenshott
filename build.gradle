@@ -18,28 +18,23 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath Plugins.android
+
+        // Publish to Jcenter/Bintray
+        classpath Plugins.bintray
+        classpath Plugins.androidMaven
+
+        // Kotlin Plugin
+        classpath Plugins.kotlin
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-
-        // Required plugins added to classpath to facilitate pushing to Jcenter/Bintray
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+apply from: "$rootProject.projectDir/configs/setupPluginsAndConfig.gradle"

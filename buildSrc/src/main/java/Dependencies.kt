@@ -32,7 +32,7 @@ object Dependencies {
     const val andxAppCompat = "androidx.appcompat:appcompat:${Versions.andxAppcompat}"
     const val andxCore = "androidx.core:core:${Versions.andxCore}"
     const val andxAnnotation = "androidx.annotation:annotation:${Versions.andxAnnoation}"
-    const val Material = "'com.google.android.material:material:${Versions.material}"
+    const val Material = "com.google.android.material:material:${Versions.material}"
     const val andxLifecycleRuntime =
         "androidx.lifecycle:lifecycle-runtime:${Versions.andxLifecycleRuntime}"
 }
